@@ -1,0 +1,99 @@
+文件下载：
+安装包：https://www.atlassian.com/zh/software/jira/update
+破解文件：https://github.com/haxqer/jira  
+MySQL： https://dev.mysql.com/downloads/installer/
+MySQL连接器： https://downloads.mysql.com/archives/c-j/
+JDK8（可以不安装，Jira内置）   https://545c.com/dir/15405323-40806633-3e407b
+
+官方帮助文件：
+https://confluence.atlassian.com/adminjiraserver/installing-jira-applications-on-windows-938846835.html#
+
+
+1.安装MySQL并创建数据库
+
+参考https://confluence.atlassian.com/adminjiraserver071/connecting-jira-applications-to-mysql-802592179.html
+找到SQL安装目录 mysql -u root -p 登陆后创建  密码如果没设置为空
+
+MySQL 5.7
+
+CREATE DATABASE jiradb CHARACTER SET utf8 COLLATE utf8_bin;
+
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER,INDEX on *.* TO 'jira'@'localhost' IDENTIFIED BY 'jira';
+
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER,INDEX on *.* TO jira@localhost IDENTIFIED BY jira;
+flush privileges;
+
+MySQL 8.0
+
+CREATE USER 'jira' IDENTIFIED BY 'jira';
+CREATE DATABASE jira CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,REFERENCES,ALTER,INDEX on <JIRA>.* TO 'root'@'localhost';
+flush privileges;
+
+
+
+代码说明不用执行【GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER,INDEX on <JIRADB>.* TO '<USERNAME>'@'<JIRA_SERVER_HOSTNAME>' IDENTIFIED BY '<PASSWORD>';】
+
+修改MySQL配置文件 my.cnf file (my.ini on Windows operating systems) in your MySQL server.
+
+[mysqld]  5.0
+...
+default-storage-engine=INNODB
+max_allowed_packet=256M
+innodb_log_file_size=256M
+// remove this if it exists  Ensure the sql_mode parameter does not specify NO_AUTO_VALUE_ON_ZERO
+sql_mode = NO_AUTO_VALUE_ON_ZERO
+
+
+
+[mysqld]  8.0
+
+default-storage-engine=INNODB
+character_set_server=utf8mb4
+innodb_default_row_format=DYNAMIC
+innodb_log_file_size=2G
+// remove this if it exists
+sql_mode = NO_AUTO_VALUE_ON_ZERO
+
+2.安装Jira，完成后将MySQL连接器mysql-connector-java-5.1.36-bin.jar  复制到 JIRA中的lib里，需要重启生效。
+
+
+3.修改Jira中 setenv.bat 使在程序启动时加载破解文件，加入破解文件 -javaagent:D:\atlassian-agent.jar
+
+Windows
+set JAVA_OPTS=-javaagent:D:\atlassian-agent.jar %JAVA_OPTS% -Xms%JVM_MINIMUM_MEMORY% -Xmx%JVM_MAXIMUM_MEMORY% %JVM_CODE_CACHE_ARGS% %JVM_REQUIRED_ARGS% %DISABLE_NOTIFICATIONS% %JVM_SUPPORT_RECOMMENDED_ARGS% %JVM_EXTRA_ARGS% %JIRA_HOME_MINUSD% %START_JIRA_JAVA_OPTS%
+
+修改启动服务 Atlassian Jira 使用SrvanyUI修改启动参数，添加++JvmOptions="-javaagent:E:\Atlassian\atlassian-agent.jar"
+
+tomcat8 //US//JiraSoftwareXXXX ++JvmOptions="-javaagent:E:\Atlassian\atlassian-agent.jar"
+
+
+
+
+需要重启生效
+
+
+
+Linux  
+# Crack agent usage: append -javaagent arg to system environment: JAVA_OPTS.
+# Example(execute this command or append it to setenv.sh file):
+
+  export JAVA_OPTS="-javaagent:/D:/atlassian-agent.jar ${JAVA_OPTS}"
+
+# Then start your confluence/jira server.
+
+4.激活码生成，如果没有安装jdk，需要使用C:\Program Files\Atlassian\Jira\jre\bin 目录下的java执行，cmd切换到该目录运行。
+
+java -jar atlassian-agent.jar  -p jira     -m haxqer666@gmail.com    -n haxqer666@gmail.com    -o http://website     -s 用户ID
+
+激活插件程序
+
+java -jar atlassian-agent.jar  -p eu.softwareplant.biggantt(插件名称)     -m haxqer666@gmail.com    -n haxqer666@gmail.com    -o http://website     -s 用户ID
+
+jira-timesheet-plugin
+
+BIM8-4V5M-L9LY-D2BG
+
+-p jira-timesheet-plugin    -m haxqer666@gmail.com    -n haxqer666@gmail.com    -o http://website     -s BIM8-4V5M-L9LY-D2BG
+
+
