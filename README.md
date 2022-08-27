@@ -105,9 +105,13 @@ For Windows
 
 文件下载：
 安装包：https://www.atlassian.com/zh/software/jira/update
+
 激活文件：https://github.com/haxqer/jira  
+
 JDK8（可以不安装，Jira内置）   https://545c.com/dir/15405323-40806633-3e407b
+
 数据库推荐使用：https://www.postgresql.org/  配置比MySQL较简单
+
 官方帮助文件：
 https://confluence.atlassian.com/adminjiraserver/installing-jira-applications-on-windows-938846835.html#
 
