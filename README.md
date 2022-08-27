@@ -132,10 +132,11 @@ https://confluence.atlassian.com/adminjiraserver/installing-jira-applications-on
    
    激活码生成，如果没有安装jdk，需要使用C:\Program Files\Atlassian\Jira\jre\bin 目录下的java执行，cmd切换到该目录运行。
 
-    java -jar E:\Atlassian\atlassian-agent.jar  -p jira     -m haxqer666@gmail.com    -n haxqer666@gmail.com    -o http://website     -s 用户ID
+    java -jar E:\Atlassian\atlassian-agent.jar -p jira -m haxqer666@gmail.com -n haxqer666@gmail.com -o http://website -s 用户ID
 
-    激活插件程序
+   
+   激活插件程序
 
-   java -jar E:\Atlassian\atlassian-agent.jar  -p eu.softwareplant.biggantt(插件名称)     -m haxqer666@gmail.com    -n haxqer666@gmail.com    -o http://website     -s 用户ID
+   java -jar E:\Atlassian\atlassian-agent.jar  -p eu.softwareplant.biggantt(插件名称) -m haxqer666@gmail.com -n haxqer666@gmail.com -o http://website -s 用户ID
    
    可以运行 java -jar E:\Atlassian\atlassian-agent.jar  查看相关帮助
