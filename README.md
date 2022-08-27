@@ -14,6 +14,10 @@ JDK8（可以不安装，Jira内置）   https://545c.com/dir/15405323-40806633-
 官方帮助文件：
 https://confluence.atlassian.com/adminjiraserver/installing-jira-applications-on-windows-938846835.html#
 
+参考
+https://github.com/keygood/atlassian-agent
+https://github.com/hgqapp/atlassian-agent
+
 1.安装postgresql并创建数据库，使用pgAdmin创建数据库jira 用户jira 密码jira，添加用户jira权限，用户名密码可自己修改，后续配置也需用到
 ![image](https://user-images.githubusercontent.com/63717679/187026128-a3e48b39-74e7-4e6d-aabd-76c37cf43d73.png)
 ![image](https://user-images.githubusercontent.com/63717679/187026154-d37a4525-0e59-4392-a4ae-a6e70c44dfb7.png)
